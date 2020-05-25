@@ -1,9 +1,13 @@
 # Hydra and Neptune
 
-This repository contains the code for the Hydra Adversarial Testing Tool as well as Neptune, a machine learning based network intrusion detection system for SDN's.
+This repository contains the code for the Hydra Adversarial Testing Tool as well as Neptune, a machine learning based network intrusion detection system for Software-Defined Networks.
 
-### - Main Neptune and Hydra TestManager package files located within the [App directory](https://gitlab.eeecs.qub.ac.uk/40151282/HydraAndNeptune_ResearchProject/tree/master/App)
-### - [Hydra](https://gitlab.eeecs.qub.ac.uk/40151282/HydraAndNeptune_ResearchProject/tree/master/Hydra) and [TestingTool](https://gitlab.eeecs.qub.ac.uk/40151282/HydraAndNeptune_ResearchProject/tree/master/TestingTool) directories form the Django framework for the web application
+For more details of this work, please see our IEEE NFV-SDN 2019 article:
+
+James Aiken and Sandra Scott-Hayward, "Investigating Adversarial Attacks against Network Intrusion Detection Systems in SDNs." In 2019 IEEE Conference on Network Function Virtualization and Software Defined Networks (NFV-SDN), pp. 1-7. IEEE, 2019.
+
+### - Main Neptune and Hydra TestManager package files located within the [App directory](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/App)
+### - [Hydra](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/Hydra) and [TestingTool](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/TestingTool) directories form the Django framework for the web application
 
 ## Getting Started
 
@@ -67,7 +71,7 @@ pip install -U scikit-learn
 ```
 
 Install the [Argus](https://qosient.com/argus/downloads.shtml) server and clients
-That is, downloaded the latest server tar.gz and latest clients tar.gz
+That is, download the latest server tar.gz and latest clients tar.gz
 Extract them, and within each extracted directory perform:
 ```
 ./configure
@@ -88,7 +92,7 @@ sudo apt-get install bison
 
 First, configure the controller Faucet to mirror all network traffic on Mininet to a specific host for Argus to listen to.
 
-Add the [faucet.yaml](https://gitlab.eeecs.qub.ac.uk/40151282/HydraAndNeptune_ResearchProject/blob/master/faucet.yaml) file to /etc/faucet/
+Add the [faucet.yaml](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/master/faucet.yaml) file to /etc/faucet/
 Faucet will require a restart ```sudo systemctl restart faucet-service```
 
 This mirrors all traffic to host 10 however can be configured differently if required.  Just make sure to tell Argus to listen to the different host.
@@ -128,9 +132,12 @@ You will see the test processes commence in consoles, these will disappear when 
 
 1. If the curl command for packagecloud.io remains at 0%, the packagecloud servers may be down and you may have to wait until they have recovered
 
-## Authors
+## Contributors
 
 * **James Aiken**
+* **Sandra Scott-Hayward**
+
+To get in contact about the project, please contact James at ....
 
 
 ## Acknowledgments
