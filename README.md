@@ -7,7 +7,7 @@ For more details of this work, please see our IEEE NFV-SDN 2019 article:
 ```
 James Aiken and Sandra Scott-Hayward
 "Investigating Adversarial Attacks against Network Intrusion Detection Systems in SDNs." 
-In 2019 IEEE Conference on Network Function Virtualization and Software Defined Networks (NFV-SDN), pp. 1-7. IEEE, 2019.
+IEEE Conference on Network Function Virtualization and Software Defined Networks (NFV-SDN), pp. 1-7. IEEE, 2019.
 ```
 
 <p align="center">
