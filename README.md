@@ -4,7 +4,13 @@ This repository contains the code for the Hydra Adversarial Testing Tool as well
 
 For more details of this work, please see our IEEE NFV-SDN 2019 article:
 
+```
 James Aiken and Sandra Scott-Hayward, "Investigating Adversarial Attacks against Network Intrusion Detection Systems in SDNs." In 2019 IEEE Conference on Network Function Virtualization and Software Defined Networks (NFV-SDN), pp. 1-7. IEEE, 2019.
+```
+
+<p align="center">
+  <img src="https://github.com/sdshayward/AdversialSDN-Hydra/blob/master/imgs/HydraGUI.png?raw=true" alt="Hydra GUI" />
+</p>
 
 ### - Main Neptune and Hydra TestManager package files located within the [App directory](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/App)
 ### - [Hydra](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/Hydra) and [TestingTool](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/TestingTool) directories form the Django framework for the web application
