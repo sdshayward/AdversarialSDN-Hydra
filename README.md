@@ -11,7 +11,7 @@ IEEE Conference on Network Function Virtualization and Software Defined Networks
 ```
 
 <p align="center">
-  <img src="https://github.com/sdshayward/AdversialSDN-Hydra/blob/master/imgs/HydraGUI.png" alt="Hydra GUI" />
+  <img src="imgs/HydraGUI.png?raw=true" alt="Hydra GUI" width="600" />
 </p>
 
 ### - Main Neptune and Hydra TestManager package files located within the [App directory](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/App)
