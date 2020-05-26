@@ -13,8 +13,8 @@ IEEE Conference on Network Function Virtualization and Software Defined Networks
 ### - Main Neptune and Hydra TestManager package files located within the [App directory](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/App)
 
 <p align="middle">
-  <img src="imgs/NeptuneProcess.png?raw=true" alt="Neptune Flow Process" width="300" />
- <img src="imgs/HydraProcess.png?raw=true" alt="Hydra Flow Process" width="300" />
+  <img src="imgs/NeptuneProcess.png?raw=true" alt="Neptune Flow Process" width="400" />
+ <img src="imgs/HydraProcess.png?raw=true" alt="Hydra Flow Process" width="400" />
 </p>
 
 ### - [Hydra](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/Hydra) and [TestingTool](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/TestingTool) directories form the Django framework for the web application
@@ -151,7 +151,7 @@ You will see the test processes commence in consoles, these will disappear when 
 * **James Aiken**
 * **Sandra Scott-Hayward**
 
-To get in contact about the project, please contact James at jaiken06@qub.ac.uk 
+To get in contact about the project, please email James at jaiken06@qub.ac.uk 
 
 
 ## Acknowledgments
