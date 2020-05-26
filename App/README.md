@@ -37,20 +37,22 @@ settings such as the classifier requested in the test.  Intrusion results and th
 training status are also written here.
 
 ## Generating your own Flow Statistics to train Neptune
-This repository only comes with a small selection of sample flow statistics in App/stats_training and App/stats_testing (as well as in App/tests/test_stats/).  If you would like to generate your own flow statistics for Neptune to use in training and testing, you can use [App/traffic_stats.py](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/master/App/traffic_stats.py).  This class is the flow statistic generation class used by Neptune itself, however can also be used standalone to generate your own statistics.
+This repository only comes with a small selection of sample flow statistics in App/stats_training and App/stats_testing (as well as in App/tests/test_stats/).  The details of the training datasets we used are provided in the paper. Unfortunately, we cannot make these available as the DARPA dataset is restricted access. To generate your own flow statistics for Neptune to use in training and testing, you can use [App/traffic_stats.py](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/master/App/traffic_stats.py).  This class is the flow statistic generation class used by Neptune itself. However, it can also be used standalone to generate your own statistics.
 
-As mentioned in the installation above, Argus is required for flow statistic generation.  Mininet and Faucet will need to be started up manually as Argus will listen to s1-eth0 by default however this can be [changed](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L89) based on your personal setup.  The Python for Hydra launches Mininet [like so](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/f4de6cd9197c2eff6417f2b43d0a20e929bbeeef/App/TestManager/main.py#L185), however an equivalent can be launched via the command line manually.
+As mentioned in the Installation instructions, Argus is required for flow statistic generation.  Mininet and Faucet will need to be started up manually as Argus will listen to s1-eth0 by default. However, this can be [changed](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L89) based on your personal setup.  The python script for Hydra launches Mininet [like so](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/f4de6cd9197c2eff6417f2b43d0a20e929bbeeef/App/TestManager/main.py#L185). An equivalent can be launched manually via the command line.
 
 ```
 sudo mn --topo single,10 --controller remote,ip=127.0.0.1,port=6653
 ```
-Note the SDN controller is set to remote on port 6653, this is where Faucet should be running.
+Note that the SDN controller is set to remote on port 6653, which is where Faucet should be running.
 
 The Class can be started by executing:
 ```
 sudo python traffic_stats.py
 ```
 When recording your benign traffic, set [self.malicious = 0](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L57)
+
 When recording malicious traffic set [self.malicious = 1](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L57)
-(This labels your flows so the ML models can use them (supervised learning) )
+
+(This labels your flows so that the ML models can use them (supervised learning).)
 
