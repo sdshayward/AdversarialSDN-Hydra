@@ -10,6 +10,8 @@ James Aiken and Sandra Scott-Hayward
 IEEE Conference on Network Function Virtualization and Software Defined Networks (NFV-SDN), pp. 1-7. IEEE, 2019.
 ```
 
+If you fork this project for your own development, please credit the AdversarialSDN-Hydra Github project and reference the [IEEE NFV-SDN 2019](https://ieeexplore.ieee.org/abstract/document/9040101) article. Please read these Contribution Rules.
+
 ### - Main Neptune and Hydra TestManager package files located within the [App directory](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/App)
 
 <p align="middle">
