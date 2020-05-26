@@ -1,6 +1,6 @@
 # Hydra and Neptune
 
-This repository contains the code for the Hydra Adversarial Testing Tool as well as Neptune, a machine learning based network intrusion detection system for Software-Defined Networks.
+This repository contains the code for the Hydra Adversarial Testing Tool as well as Neptune, a machine learning based network intrusion detection system (NIDS) for Software-Defined Networks (SDN).
 
 For more details of this work, please see our IEEE NFV-SDN 2019 article:
 
@@ -29,10 +29,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.  This project was based on Ubuntu 18.04 therefore most of the installation commands are tailored towards this distribution.
+What tools/libraries you need to install the software and how to install them.  This project was based on Ubuntu 18.04 so that most of the installation commands are tailored towards this distribution.
 
-If not using your own SDN, the Hydra and Neptune testbed was implemented with [Faucet](https://faucet.nz/) as an SDN controller and [Mininet](http://mininet.org/) which is included in the project files.
-Faucet however does need to be installed with the following:
+If not using your own SDN, the Hydra and Neptune testbed was implemented with [Faucet](https://faucet.nz/) as an SDN controller and [Mininet](http://mininet.org/), which is included in the project files.
+Faucet, however, does need to be installed with the following:
 
 ```
 sudo apt-get install curl gnupg apt-transport-https lsb-release
@@ -45,13 +45,13 @@ sudo apt-get update
 
 sudo apt-get install faucet
 ```
-To get faucet to launch on system boot:
+To get Faucet to launch on system boot:
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable faucet-service
 sudo systemctl start faucet-service
 ```
-or just start and stop faucet controller manually:
+or just start and stop the Faucet controller manually:
 ```
 sudo systemctl start faucet-service
 sudo systemctl stop faucet-service
@@ -84,8 +84,8 @@ sudo apt-get install python-pandas
 pip install -U scikit-learn
 ```
 
-Install the [Argus](https://qosient.com/argus/downloads.shtml) server and clients
-That is, download the latest server tar.gz and latest clients tar.gz
+Install the [Argus](https://qosient.com/argus/downloads.shtml) server and clients.
+That is, download the latest server tar.gz and latest clients tar.gz,
 Extract them, and within each extracted directory perform:
 ```
 ./configure
@@ -104,14 +104,14 @@ sudo apt-get install bison
 
 ### Installation and Deployment
 
-First, configure the controller Faucet to mirror all network traffic on Mininet to a specific host for Argus to listen to.
+First, configure the SDN controller (Faucet) to mirror all network traffic on Mininet to a specific host for Argus to listen to.
 
 Add the [faucet.yaml](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/master/faucet.yaml) file to /etc/faucet/
 Faucet will require a restart ```sudo systemctl restart faucet-service```
 
-This mirrors all traffic to host 10 however can be configured differently if required.  Just make sure to tell Argus to listen to the different host.
+This mirrors all traffic to host 10. However, it can be configured differently, if required.  Just make sure to tell Argus to listen to the different host.
 
-Next navigate to the main directory HydraWebApp and execute the following command to start the Hydra web application server and database:
+Next, navigate to the main directory HydraWebApp and execute the following command to start the Hydra web application server and database:
 
 ```
 sudo python manage.py runserver
@@ -130,20 +130,20 @@ http://127.0.0.1:8000/
 ## Running the tests
 
     1. Choose the network configuration you would like to use for the test.
-    2. Configure the test you would like to perform, all fields must be configured before submission
-    3. Select submit test
+    2. Configure the test you would like to perform. All fields must be configured before submission.
+    3. Select submit test.
     
-You will see the test processes commence in consoles, these will disappear when the result has returned and will appear in the testing results table in the interface.
+You will see the test processes commence in consoles. These will disappear when the result has returned and will appear in the testing results table in the interface.
 
 ## Generating your own Flow Statistics to train Neptune
-This repository only comes with a small selection of sample flow statistics in App/stats_training and App/stats_testing (as well as in App/tests/test_stats/).  If you would like to generate your own flow statistics for Neptune to use in training and testing, you can use [App/traffic_stats.py](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/master/App/traffic_stats.py).  This class is the flow statistic generation class used by Neptune itself, however can also be used standalone to generate your own statistics.
+This repository only comes with a small selection of sample flow statistics in App/stats_training and App/stats_testing (as well as in App/tests/test_stats/).  The details of the training datasets we used are provided in the paper. Unfortunately, we cannot make these available as the DARPA dataset is restricted access. To generate your own flow statistics for Neptune to use in training and testing, you can use [App/traffic_stats.py](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/master/App/traffic_stats.py).  This class is the flow statistic generation class used by Neptune itself. However, it can also be used standalone to generate your own statistics.
 
-As mentioned in the installation above, Argus is required for flow statistic generation.  Mininet and Faucet will need to be started up manually as Argus will listen to s1-eth0 by default however this can be [changed](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L89) based on your personal setup.  The Python for Hydra launches Mininet [like so](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/f4de6cd9197c2eff6417f2b43d0a20e929bbeeef/App/TestManager/main.py#L185), however an equivalent can be launched via the command line manually.
+As mentioned in the Installation instructions, Argus is required for flow statistic generation.  Mininet and Faucet will need to be started up manually as Argus will listen to s1-eth0 by default. However, this can be [changed](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L89) based on your personal setup.  The python script for Hydra launches Mininet [like so](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/f4de6cd9197c2eff6417f2b43d0a20e929bbeeef/App/TestManager/main.py#L185). An equivalent can be launched manually via the command line.
 
 ```
 sudo mn --topo single,10 --controller remote,ip=127.0.0.1,port=6653
 ```
-Note the SDN controller is set to remote on port 6653, this is where Faucet should be running.
+Note that the SDN controller is set to remote on port 6653, which is where Faucet should be running.
 
 The Class can be started by executing:
 ```
@@ -153,7 +153,7 @@ When recording your benign traffic, set [self.malicious = 0](https://github.com/
 
 When recording malicious traffic set [self.malicious = 1](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L57)
 
-(This labels your flows so the ML models can use them (supervised learning) )
+(This labels your flows so that the ML models can use them (supervised learning).)
 
 
 ## Built With
@@ -164,7 +164,7 @@ When recording malicious traffic set [self.malicious = 1](https://github.com/sds
 ## Installation Troubleshooting
 
 1. If the curl command for packagecloud.io remains at 0%, the packagecloud servers may be down and you may have to wait until they have recovered
-2. If the application is crashing due to missing files/directories, double check the naming of the directories within the code with the ones on your local environment to ensure they are consistent. 
+2. If the application is crashing due to missing files/directories, double check the naming of the directories within the code with the ones on your local environment to ensure that they are consistent. 
 
 ## Contributors
 
@@ -172,7 +172,6 @@ When recording malicious traffic set [self.malicious = 1](https://github.com/sds
 * **Sandra Scott-Hayward**
 
 To get in contact about the project, please email James at jaiken06@qub.ac.uk 
-
 
 ## Acknowledgments
 
