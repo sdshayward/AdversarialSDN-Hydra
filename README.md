@@ -150,7 +150,9 @@ The Class can be started by executing:
 sudo python traffic_stats.py
 ```
 When recording your benign traffic, set [self.malicious = 0](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L57)
+
 When recording malicious traffic set [self.malicious = 1](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L57)
+
 (This labels your flows so the ML models can use them (supervised learning) )
 
 
@@ -162,6 +164,7 @@ When recording malicious traffic set [self.malicious = 1](https://github.com/sds
 ## Installation Troubleshooting
 
 1. If the curl command for packagecloud.io remains at 0%, the packagecloud servers may be down and you may have to wait until they have recovered
+2. If the application is crashing due to missing files/directories, double check the naming of the directories within the code with the ones on your local environment to ensure they are consistent. 
 
 ## Contributors
 
