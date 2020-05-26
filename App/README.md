@@ -5,6 +5,9 @@ It includes training and testing stats files, a classifier utilities script whic
 provides functionality to evaluate the different classifiers, and also provides the
 NIDS itself.
 
+<p align="center">
+  <img src="../imgs/NeptuneProcess.png?raw=true" alt="Neptune Process Flow" width="600" />
+</p>
 
 ## TestManager
 This is the Hydra TestManager package which contains the adversarial testing tool
