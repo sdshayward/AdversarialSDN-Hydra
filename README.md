@@ -1,4 +1,4 @@
-# Hydra and Neptune
+# Hydra and Neptune - Adversarial Testing of NIDS in SDN
 
 This repository contains the code for the Hydra Adversarial Testing Tool as well as Neptune, a machine learning based network intrusion detection system (NIDS) for Software-Defined Networks (SDN).
 
