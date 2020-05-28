@@ -62,8 +62,7 @@ from flow_cleaning import FlowCleaning
 # Prints results to console
 #
 def main():
-
-    os.chdir('/home/james/Documents/University/ResearchProject/HydraWebApp/App/')
+    os.chdir(os.getcwd() + '/App/')
     classifier = sys.argv[1]
     functionality = sys.argv[2]
 

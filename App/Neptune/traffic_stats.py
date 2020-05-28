@@ -85,8 +85,11 @@ class TrafficStats():
 
         # Start Argus auditing
         training = True
+
+        output_dir = os.getcwd() + "/stats_training/traffic.txt"
+
         if training:
-            cmd = "sudo argus -m -d -i s1-eth10 -w /home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_training/traffic.txt &"
+            cmd = "sudo argus -m -d -i s1-eth10 -w " + output_dir + " &"
         Popen(['gnome-terminal', '-e', cmd], stdout=PIPE)
 
         # Flow stat collection loop
@@ -112,22 +115,27 @@ class TrafficStats():
     #    training: boolean value True if training
     #
     def request_stats(self, batch_number, training):
+        training_output_dir = os.getcwd() + "/Neptune/stats_training/traffic.txt"
+        training_csv_output_dir = os.getcwd() + "/Neptune/stats_training/output"
+        live_output_dir = os.getcwd() + "/Neptune/stats_live/traffic.txt"
+        live_csv_output_dir = os.getcwd() + "/Neptune/stats_live/output"
+
 
         print("--Polling for recent flow statistics--")
         if training:
-            cmd = "sudo ra -r /home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_training/traffic.txt - tcp -t -20s -s 'smac:16', 'dmac:16', 'saddr:16', 'sport:10', 'daddr:16', 'dport:10', 'proto','mean', 'pkts:10', 'spkts:10', 'dpkts:10', 'bytes:10', 'sbytes:10', 'dbytes:10', 'rate:15', 'state', 'dur:9' -nn -z -c ',' > /home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_training/output" + str(batch_number) + ".csv"
-            #cmd = "sudo ra -r /home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_training/traffic.txt -t -20s -s 'smac:16', 'dmac:16', 'saddr:16', 'sport:10', 'daddr:16', 'dport:10', 'proto','mean', 'pkts:10', 'spkts:10', 'dpkts:10', 'bytes:10', 'sbytes:10', 'dbytes:10', 'rate:15', 'state', 'dur:9' -nn -z -c ',' > /home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_training/output" + str(batch_number) + ".csv"
+            cmd = "sudo ra -r " + training_output_dir + " - tcp -t -20s -s 'smac:16', 'dmac:16', 'saddr:16', 'sport:10', 'daddr:16', 'dport:10', 'proto','mean', 'pkts:10', 'spkts:10', 'dpkts:10', 'bytes:10', 'sbytes:10', 'dbytes:10', 'rate:15', 'state', 'dur:9' -nn -z -c ',' > " + training_csv_output_dir + str(batch_number) + ".csv"
 
         else:
-            cmd = "sudo ra -r /home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_live/traffic.txt -t -20s -s 'smac:16', 'dmac:16', 'saddr:16', 'sport:10', 'daddr:16', 'dport:10', 'proto', 'mean', 'pkts:10', 'spkts:10', 'dpkts:10', 'bytes:10', 'sbytes:10', 'dbytes:10', 'rate:15', 'state', 'dur:9' -nn -z -c ',' > /home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_live/output" + str(batch_number) + ".csv"
+            print(live_output_dir)
+            cmd = "sudo ra -r " + live_output_dir + " -t -20s -s 'smac:16', 'dmac:16', 'saddr:16', 'sport:10', 'daddr:16', 'dport:10', 'proto', 'mean', 'pkts:10', 'spkts:10', 'dpkts:10', 'bytes:10', 'sbytes:10', 'dbytes:10', 'rate:15', 'state', 'dur:9' -nn -z -c ',' > " + live_csv_output_dir + str(batch_number) + ".csv"
         os.system(cmd)
 
         if training:
             # Write flow stats and target to corresponding training batch
             num_lines = sum(1 for line in
-                            open("/home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_training/output" + str(batch_number) + ".csv"))
+                            open(training_csv_output_dir + str(batch_number) + ".csv"))
 
-            target_dir = "/home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_training/output" + str(batch_number) + "_target.txt"
+            target_dir = training_csv_output_dir + str(batch_number) + "_target.txt"
             try:
                 with open(target_dir, 'w') as target:
                     target.write('target\n')

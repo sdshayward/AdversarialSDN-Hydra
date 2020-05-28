@@ -57,8 +57,7 @@ from test_suite import TestSuite
 # Terminates Neptune and Mininet when finished
 #
 def main():
-
-    dir = "/home/james/Documents/University/ResearchProject/HydraWebApp/App/"
+    dir = os.getcwd() + "/App/"
     net_assigned = False
     try:
         # Read testing arguments
