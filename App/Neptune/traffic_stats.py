@@ -126,7 +126,6 @@ class TrafficStats():
             cmd = "sudo ra -r " + training_output_dir + " - tcp -t -20s -s 'smac:16', 'dmac:16', 'saddr:16', 'sport:10', 'daddr:16', 'dport:10', 'proto','mean', 'pkts:10', 'spkts:10', 'dpkts:10', 'bytes:10', 'sbytes:10', 'dbytes:10', 'rate:15', 'state', 'dur:9' -nn -z -c ',' > " + training_csv_output_dir + str(batch_number) + ".csv"
 
         else:
-            print(live_output_dir)
             cmd = "sudo ra -r " + live_output_dir + " -t -20s -s 'smac:16', 'dmac:16', 'saddr:16', 'sport:10', 'daddr:16', 'dport:10', 'proto', 'mean', 'pkts:10', 'spkts:10', 'dpkts:10', 'bytes:10', 'sbytes:10', 'dbytes:10', 'rate:15', 'state', 'dur:9' -nn -z -c ',' > " + live_csv_output_dir + str(batch_number) + ".csv"
         os.system(cmd)
 
