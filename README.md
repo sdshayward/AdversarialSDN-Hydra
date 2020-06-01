@@ -113,7 +113,7 @@ Faucet will require a restart ```sudo systemctl restart faucet-service```
 
 This mirrors all traffic to host 10. However, it can be configured differently, if required.  Just make sure to tell Argus to listen to the different host.
 
-Next, navigate to the main directory HydraWebApp and execute the following command to start the Hydra web application server and database:
+Next, navigate to the base directory AdversarialSDN-Hydra and execute the following command to start the Hydra web application server and database:
 
 ```
 sudo python manage.py runserver
@@ -167,6 +167,14 @@ When recording malicious traffic set [self.malicious = 1](https://github.com/sds
 
 1. If the curl command for packagecloud.io remains at 0%, the packagecloud servers may be down and you may have to wait until they have recovered
 2. If the application is crashing due to missing files/directories, double check the naming of the directories within the code with the ones on your local environment to ensure that they are consistent. 
+
+## Tests
+Execute any tests within ../tests/ directories from the ../AdversarialSDN-Hydra directory.
+e.g.
+```
+cd <your-directory>/AdversarialSDN-Hydra
+sudo python App/Neptune/tests/test_unit_main.py
+```
 
 ## Contributors
 
