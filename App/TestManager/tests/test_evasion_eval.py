@@ -205,9 +205,6 @@ class EvasionEval:
     def packet_size(self, pkt_count):
         print("Executing Size Evasion test..")
 
-        # Send benign network traffic
-        # self.h12.cmd('tcpreplay --intf1=h12-eth0 /home/james/Documents/University/ResearchProject/Traffic/TestTraffic/Test/BenignTest.pcap 10.0.0.13 &')
-
         src_eth = ['2','1','3','4','4','6','2','4','6','7']
         dst_eth = ['1','3','2','5','1','9','9','2','3','2']
 
@@ -243,9 +240,6 @@ class EvasionEval:
 
     def base_detection(self, pkt_count):
         print("Executing base detection evaluation..")
-
-        # Send benign network traffic
-        # self.h12.cmd('tcpreplay --intf1=h12-eth0 /home/james/Documents/University/ResearchProject/Traffic/TestTraffic/Test/BenignTest.pcap 10.0.0.13 &')
 
         src_eth = ['2','1','3','4','4','6','2','4','6','7']
         dst_eth = ['1','3','2','5','1','9','9','2','3','2']
