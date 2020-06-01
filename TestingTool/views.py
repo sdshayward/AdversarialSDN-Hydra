@@ -48,7 +48,7 @@ def index(request):
     elif request.method == 'POST':
         form = TestForm(request.POST)
         if form.is_valid():
-            dir = "/home/james/Documents/University/ResearchProject/HydraWebApp/App/TestManager/"
+            dir = os.getcwd() + "/App/TestManager/"
             form.save()
 
             sub_time = form.cleaned_data['submissionTime']

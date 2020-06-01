@@ -26,9 +26,10 @@ class UnitFlowCleaning(unittest.TestCase):
 
     maxDiff = None
 
+
     def test_unit_batch_aggregate(self):
         fc = FlowCleaning()
-
+        cwdir = os.getcwd()
         key1 = '00:13:80:5c:32:c0_00:21:56:ef:bc:00_6_2'
         key2 = '00:13:80:5c:32:c1_00:21:56:ef:bc:00_6_2'
         dict = {}
@@ -36,8 +37,8 @@ class UnitFlowCleaning(unittest.TestCase):
         dict[key2] = "00:13:80:5c:32:c1,00:21:56:ef:bc:00,6,2,4,4,0,240,240,0,1,0,0\n"
 
         # Directory for testing statistics
-        test_stats_dir = '/home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/tests/test_stats/output_test.csv'
-        test_target_dir = '/home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/tests/test_stats/output_test_target.txt'
+        test_stats_dir = cwdir + '/App/Neptune/tests/test_stats/output_test.csv'
+        test_target_dir = cwdir + '/App/Neptune/tests/test_stats/output_test_target.txt'
         live = False
 
         test_stats = open(test_stats_dir, 'r')
@@ -48,7 +49,7 @@ class UnitFlowCleaning(unittest.TestCase):
 
     def test_unit_aggregate_stats(self):
         fc = FlowCleaning()
-        dir = '/home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/tests/test_stats/'
+        dir = os.getcwd() + '/App/Neptune/tests/test_stats/'
         fc.aggregate_stats(dir)
 
         agg_stats_file = open(dir+'FlowStats_cleaned.csv','r')

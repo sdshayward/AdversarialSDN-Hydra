@@ -45,7 +45,7 @@ class UnitTestManagerTestSuite(unittest.TestCase):
 
     def test_unit_calc_acc(self):
         try:
-            dir = "/home/james/Documents/University/ResearchProject/HydraWebApp/App/"
+            dir = os.getcwd() + "/App/"
             net = Mininet(autoSetMacs = True, cleanup = True)
 
             s1 = net.addSwitch('s1')

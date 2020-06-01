@@ -71,7 +71,7 @@ class NeptuneNIDS():
     # Initialises the machine learning classifier
     #
     def __init__(self):
-        os.chdir('/home/james/Documents/University/ResearchProject/HydraWebApp/App/')
+        os.chdir(os.getcwd() + "/App/")
 
         self.initialise_files()
         self.ml_flow = self.classifier_config()
@@ -96,7 +96,8 @@ class NeptuneNIDS():
         intrusions = []
 
         # Launch the Argus network auditor as a daemon
-        cmd = "sudo argus -d -m -i s1-eth10 -w /home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_live/traffic.txt &"
+        dir = os.getcwd() + "/Neptune/stats_live/traffic.txt"
+        cmd = "sudo argus -d -m -i s1-eth10 -w " + dir + " &"
         Popen(['gnome-terminal', '-e', cmd], stdout=PIPE)
 
         while True:
@@ -143,7 +144,7 @@ class NeptuneNIDS():
     #
     def initialise_files(self):
 
-        stats_live_dir = '/home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_live'
+        stats_live_dir = os.getcwd() + "/Neptune/stats_live"
 
         try:
             shutil.rmtree(stats_live_dir)
