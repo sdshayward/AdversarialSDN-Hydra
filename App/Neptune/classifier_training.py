@@ -11,6 +11,7 @@
 #################################################################################
 
 import os
+import logging
 import pandas as pd
 
 from flow_cleaning import FlowCleaning
@@ -36,7 +37,7 @@ class ClassifierTraining:
     #    poll_dur: Time in seconds between each live batch
     #
     def model_training(self, ml_flow, retrain, poll_dur):
-        os.chdir('/home/james/Documents/University/ResearchProject/HydraWebApp/App/')
+        os.chdir(os.getcwd() + "/")
 
         if not retrain:
             self.flow_clean.flow_stat_clean(False, -1, poll_dur)

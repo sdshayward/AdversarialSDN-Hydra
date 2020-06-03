@@ -25,11 +25,12 @@ from main import NeptuneNIDS
 class UnitMain(unittest.TestCase):
     def test_unit_classifier_config(self):
         neptune = NeptuneNIDS()
-
+        cwdir = os.getcwd()
+        print(dir)
         models = ['RandomForestClassifier', 'KNeighborsClassifier', 'SVC', 'MLPClassifier']
 
         for i in range(1,5):
-            with open("/home/james/Documents/University/ResearchProject/HydraWebApp/App/nids_config/classifier_type.txt", 'w') as classifier_config:
+            with open(cwdir + "/nids_config/classifier_type.txt", 'w') as classifier_config:
                 classifier_config.write(str(i))
 
             model = neptune.classifier_config()
@@ -39,10 +40,12 @@ class UnitMain(unittest.TestCase):
 
 
     def test_unit_initialise_files(self):
+        os.chdir('../')
+        cwdir = os.getcwd()
         neptune = NeptuneNIDS()
 
         neptune.initialise_files()
-        dir = '/home/james/Documents/University/ResearchProject/HydraWebApp/App/Neptune/stats_live'
+        dir = cwdir + "/App/Neptune/stats_live"
         # Check if stats_live is empty
         self.assertEqual(len(os.listdir(dir)),0)
 
@@ -50,7 +53,7 @@ class UnitMain(unittest.TestCase):
         traffic_dir = dir + '/traffic.txt'
         self.assertEqual(os.path.isfile(traffic_dir), False)
 
-        intrusion_dir = '/home/james/Documents/University/ResearchProject/HydraWebApp/App/nids_config/intrusion_results.txt'
+        intrusion_dir = cwdir + '/App/nids_config/intrusion_results.txt'
         # Check if intrusion results is empty
         self.assertEqual(os.stat(intrusion_dir).st_size, 0)
 

@@ -2,13 +2,15 @@
 
 This repository contains the code for the Hydra Adversarial Testing Tool as well as Neptune, a machine learning based network intrusion detection system (NIDS) for Software-Defined Networks (SDN).
 
-For more details of this work, please see our IEEE NFV-SDN 2019 article:
+For more details of this work, please see our [IEEE NFV-SDN 2019](https://pureadmin.qub.ac.uk/ws/portalfiles/portal/192742980/1570562331_Hydra.pdf) article:
 
 ```
 James Aiken and Sandra Scott-Hayward
 "Investigating Adversarial Attacks against Network Intrusion Detection Systems in SDNs." 
 IEEE Conference on Network Function Virtualization and Software Defined Networks (NFV-SDN), pp. 1-7. IEEE, 2019.
 ```
+
+If you fork this project for your own development, please credit the AdversarialSDN-Hydra Github project and reference the [IEEE NFV-SDN 2019](https://ieeexplore.ieee.org/abstract/document/9040101) article. Please read these Contribution Rules.
 
 ### - Main Neptune and Hydra TestManager package files located within the [App directory](https://github.com/sdshayward/AdversarialSDN-Hydra/tree/master/App)
 
@@ -111,7 +113,7 @@ Faucet will require a restart ```sudo systemctl restart faucet-service```
 
 This mirrors all traffic to host 10. However, it can be configured differently, if required.  Just make sure to tell Argus to listen to the different host.
 
-Next, navigate to the main directory HydraWebApp and execute the following command to start the Hydra web application server and database:
+Next, navigate to the base directory AdversarialSDN-Hydra and execute the following command to start the Hydra web application server and database:
 
 ```
 sudo python manage.py runserver
@@ -136,7 +138,7 @@ http://127.0.0.1:8000/
 You will see the test processes commence in consoles. These will disappear when the result has returned and will appear in the testing results table in the interface.
 
 ## Generating your own Flow Statistics to train Neptune
-This repository only comes with a small selection of sample flow statistics in App/stats_training and App/stats_testing (as well as in App/tests/test_stats/).  The details of the training datasets we used are provided in the paper. Unfortunately, we cannot make these available as the DARPA dataset is restricted access. To generate your own flow statistics for Neptune to use in training and testing, you can use [App/traffic_stats.py](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/master/App/traffic_stats.py).  This class is the flow statistic generation class used by Neptune itself. However, it can also be used standalone to generate your own statistics.
+This repository only comes with a small selection of sample flow statistics in App/stats_training and App/stats_testing (as well as in App/tests/test_stats/).  The details of the training datasets we used are provided in the paper. Unfortunately, we cannot make these available as the DARPA dataset is restricted access. To generate your own flow statistics for Neptune to use in training and testing, you can use [App/Neptune/traffic_stats.py](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/master/App/Neptune/traffic_stats.py).  This class is the flow statistic generation class used by Neptune itself. However, it can also be used standalone to generate your own statistics.
 
 As mentioned in the Installation instructions, Argus is required for flow statistic generation.  Mininet and Faucet will need to be started up manually as Argus will listen to s1-eth0 by default. However, this can be [changed](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/4cbb585eef9856b290bb5eb09cdbd6b450811e11/App/traffic_stats.py#L89) based on your personal setup.  The python script for Hydra launches Mininet [like so](https://github.com/sdshayward/AdversarialSDN-Hydra/blob/f4de6cd9197c2eff6417f2b43d0a20e929bbeeef/App/TestManager/main.py#L185). An equivalent can be launched manually via the command line.
 
@@ -165,6 +167,14 @@ When recording malicious traffic set [self.malicious = 1](https://github.com/sds
 
 1. If the curl command for packagecloud.io remains at 0%, the packagecloud servers may be down and you may have to wait until they have recovered
 2. If the application is crashing due to missing files/directories, double check the naming of the directories within the code with the ones on your local environment to ensure that they are consistent. 
+
+## Tests
+Execute any tests within ../tests/ directories from the ../AdversarialSDN-Hydra directory.
+e.g.
+```
+cd <your-directory>/AdversarialSDN-Hydra
+sudo python App/Neptune/tests/test_unit_main.py
+```
 
 ## Contributors
 
